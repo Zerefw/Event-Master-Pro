@@ -1,5 +1,3 @@
-
-
 package com.mycompany.eventemasterpromedellin;
 
 import java.time.LocalDate;
