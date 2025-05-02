@@ -12,7 +12,6 @@ Funcionalidades principales
 -  Registro financiero por evento
 -  Estadísticas de asistencia
 
-
 Estructura del Proyecto
 
 El sistema sigue un enfoque orientado a objetos (POO), organizado en clases como:
