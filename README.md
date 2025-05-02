@@ -1,6 +1,6 @@
-EventeMaster Pro Medellín
+EventMasterPro 
 
-EventeMaster Pro Medellín es una aplicación de consola desarrollada en Java para la gestión integral de eventos culturales o musicales. Permite controlar eventos, recintos, artistas, entradas, asistencia y finanzas.
+EventMasterPro es una aplicación de consola desarrollada en Java para para la administración completa de acontecimientos culturales o musicales. Facilita la gestión de eventos, recintos, artistas, boletos, participación y finanzas.
 
 Funcionalidades principales
 
@@ -28,8 +28,8 @@ El sistema sigue un enfoque orientado a objetos (POO), organizado en clases como
 
 Tecnologías utilizadas
 
-- **Java 8 o superior**
-- Apache **NetBeans IDE**
+- Java 8 o superior
+- Apache NetBeans IDE
 - Librerías estándar (`java.util`, `java.time`)
 
 
