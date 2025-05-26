@@ -1,5 +1,7 @@
 package com.mycompany.eventemasterpromedellin;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -98,6 +100,7 @@ public class EventeMasterProMedellin {
         Event event = new Event(id, name, date, time, location, category);
         events.add(event);
         System.out.println("Event created successfully!");
+        saveToFile("Event: " + event.toString());
     }
     
     private static void listEvents(){
@@ -123,6 +126,7 @@ public class EventeMasterProMedellin {
         Venue venue = new Venue(id, name, capacity);
         venues.add(venue);
         System.out.println("Venue created successfully!");
+        saveToFile("Venue: " + venue.toString());
     }
     
     private static void listVenues(){
@@ -146,6 +150,7 @@ public class EventeMasterProMedellin {
         Artist artist = new Artist(id, name, contact);
         artists.add(artist);
         System.out.println("Artist registered successsfully!");
+        saveToFile("Artist: " + artist.toString());
     }
     
     private static void listArtists(){
@@ -166,12 +171,19 @@ public class EventeMasterProMedellin {
         scanner.nextLine();
         System.out.println("Enter Ticket Type (e.g. General, VIP): ");
         String type = scanner.nextLine();
-        System.out.println("Enter Ticket Price: ");
-        double price = scanner.nextDouble();
-        
+        double price;
+        do {
+            System.out.println("Enter Ticket Price: ");
+            price = scanner.nextDouble();
+            if (price < 0) {
+                System.out.println("Price cannot be negative. Please enter a valid price.");
+            }
+        } while (price < 0);
+
         Ticket ticket = new Ticket(id, eventId, type, price, false);
         tickets.add(ticket);
         System.out.println("Ticket created successfully!");
+        saveToFile("Ticket: " + ticket.toString());
     }
     
     private static void sellTicket(){
@@ -191,5 +203,13 @@ public class EventeMasterProMedellin {
         System.out.println("Enter Attendee Name: ");
         String name = scanner.nextLine();
         accessControl.registerAttendee(name);
+    }
+    
+    private static void saveToFile(String data) {
+        try (FileWriter writer = new FileWriter("event_master_data.txt", true)) {
+            writer.write(data + System.lineSeparator());
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
     }
 }
