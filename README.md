@@ -1,44 +1,49 @@
-EventMasterPro 
+EventeMasterPro Medellín
 
-EventMasterPro es una aplicación de consola desarrollada en Java para para la administración completa de acontecimientos culturales o musicales. Facilita la gestión de eventos, recintos, artistas, boletos, participación y finanzas.
+**EventeMasterPro Medellín** 
 
-Funcionalidades principales
-
--  Crear y listar eventos
--  Gestionar recintos con fechas y características técnicas
--  Registrar y visualizar artistas con requerimientos técnicos
--  Crear y vender entradas
--  Control de acceso de asistentes
--  Registro financiero por evento
--  Estadísticas de asistencia
-
-Estructura del Proyecto
-
-El sistema sigue un enfoque orientado a objetos (POO), organizado en clases como:
-
-- `EventeMasterProMedellin` – clase principal con el menú de opciones
-- `Event` – define eventos con fecha, hora y categoría
-- `Artist` – modela artistas con historial y requerimientos
-- `Venue` – gestiona recintos y fechas disponibles
-- `Ticket` – entradas con estado de venta y validación
-- `AccessControl` – registro y validación de asistentes
-- `FinancialRecord` – control de ingresos, gastos y balance
+Es una aplicación de consola desarrollada en Java para la administración integral de eventos culturales y musicales. El sistema permite gestionar artistas, recintos, entradas, accesos, finanzas y estadísticas de manera centralizada.
 
 
-Tecnologías utilizadas
+## Funcionalidades principales ##
+
+- Crear y listar eventos
+- Gestionar recintos con fechas y especificaciones técnicas
+- Registrar y visualizar artistas con requerimientos técnicos
+- Crear y vender entradas para eventos
+- Controlar el acceso de asistentes mediante validación
+- Registrar ingresos y egresos financieros por evento
+- Generar estadísticas de asistencia
+
+
+## Estructura del Proyecto ##
+
+El sistema está construido bajo un enfoque de programación orientada a objetos (POO), con las siguientes clases:
+
+- `EventeMasterProMedellin` – Clase principal con el menú de navegación del sistema
+- `Event` – Define eventos con fecha, hora, artista y lugar
+- `Artist` – Representa artistas con su historial y requerimientos
+- `Venue` – Modela los recintos disponibles con su capacidad y características
+- `Ticket` – Maneja la emisión, estado de venta y validación de entradas
+- `AccessControl` – Registra y valida el ingreso de asistentes al evento
+- `FinancialRecord` – Controla ingresos, egresos y balance financiero por evento
+
+
+## Tecnologías utilizadas ##
 
 - Java 8 o superior
 - Apache NetBeans IDE
-- Librerías estándar (`java.util`, `java.time`)
+- Librerías estándar de Java (`java.util`, `java.time`, etc.)
 
 
-Requisitos
+## Requisitos ##
 
-- JDK 8+
-- NetBeans
-- Consola para entrada/salida estándar
-
-
+- JDK 8 o superior
+- NetBeans o cualquier IDE compatible con Java
+- Consola para entrada y salida de datos
 
 
+## Créditos ##
+
+Este proyecto fue desarrollado como parte de un ejercicio académico y tiene como objetivo fortalecer habilidades en diseño orientado a objetos, modularidad y desarrollo de aplicaciones de consola.
 
