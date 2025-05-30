@@ -1,48 +1,60 @@
 package com.mycompany.eventemasterpromedellin;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
 
 public class Artist {
-    private int id;
-    private String name;
-    private String contactInfo;
-    private List<String> technicalRequirements;
-    private List<String> participationHistory;
+    private final int id;
+    private final String name;
+    private final String contactInfo;
+    private final String technicalRequirements;
+    private final String participationHistory;
 
-    public Artist(int id, String name, String contactInfo) {
+    private static final String FILE_NAME = "artists.txt";
+
+    public Artist(int id, String name, String contactInfo, String technicalRequirements, String participationHistory) {
         this.id = id;
         this.name = name;
         this.contactInfo = contactInfo;
-        this.technicalRequirements = new ArrayList<>();
-        this.participationHistory = new ArrayList<>();
+        this.technicalRequirements = technicalRequirements;
+        this.participationHistory = participationHistory;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getContactInfo() { return contactInfo; }
-    public void setContactInfo(String contactInfo) { this.contactInfo = contactInfo; }
-
-    public List<String> getTechnicalRequirements() { return technicalRequirements; }
-
-    public List<String> getParticipationHistory() { return participationHistory; }
-
-    public void addTechnicalRequirement(String requirement) {
-        technicalRequirements.add(requirement);
+    public void saveToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
+            writer.write(id + "," + name + "," + contactInfo + "," + technicalRequirements + "," + participationHistory);
+            writer.newLine();
+        } catch (IOException e) {
+            System.out.println("Error writing to artist file: " + e.getMessage());
+        }
     }
 
-    public void addParticipation(String eventName) {
-        participationHistory.add(eventName);
-    }
+    public static void listArtistsFromFile() {
+        File file = new File(FILE_NAME);
+        if (!file.exists()) {
+            System.out.println("No artists found.");
+            return;
+        }
 
-    @Override
-    public String toString() {
-        return "Artist ID: " + id + ", Name: " + name + ", Contact Info: " + contactInfo +
-                ", Technical Requirements: " + technicalRequirements +
-                ", Participation History: " + participationHistory;
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", -1);
+                if (parts.length >= 5) {
+                    System.out.println("Artist ID: " + parts[0] + ", Name: " + parts[1] + ", Contact Info: " + parts[2]);
+
+                    System.out.println("  Technical Requirements:");
+                    for (String req : parts[3].split(";")) {
+                        if (!req.isBlank()) System.out.println("    - " + req);
+                    }
+
+                    System.out.println("  Participation History:");
+                    for (String event : parts[4].split(";")) {
+                        if (!event.isBlank()) System.out.println("    - " + event);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading from artist file: " + e.getMessage());
+        }
     }
 }
